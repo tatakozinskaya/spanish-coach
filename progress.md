@@ -30,3 +30,6 @@
 
 ## 2026-10-15 20:20 (Telegram) — 5/10
 - Weak: el día, estar, ir, ser, tomar
+
+## 2026-10-15 20:26 (Telegram) — 9/10
+- Weak: ayudar
