@@ -10,4 +10,4 @@ exercise_types:           # включённые типы заданий (см. 
   - conjugation_fill
   - multiple_choice
   - find_the_error
-check_strictness: relaxed # не считать ошибками опечатки и отсутствующие ударения
+check_strictness: strict  # ударения и ñ/ü/¡/¿ обязательны; опечатки не прощаем (было relaxed до 2026-10-15)
