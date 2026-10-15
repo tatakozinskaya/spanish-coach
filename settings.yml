@@ -1,0 +1,13 @@
+# Уровень и параметры тренировки. Правьте руками или попросите агента.
+level: A0                 # с нуля
+tenses: [presente]        # когда будете готовы: [presente, pretérito_indefinido, pretérito_perfecto]
+session_size: 10          # заданий за сессию
+mix:
+  verbs_share: 0.6        # доля заданий на глаголы/спряжения
+  vocabulary_share: 0.4   # доля заданий на лексику
+exercise_types:           # включённые типы заданий (см. exercises.md)
+  - translate_to_es
+  - conjugation_fill
+  - multiple_choice
+  - find_the_error
+check_strictness: relaxed # не считать ошибками опечатки и отсутствующие ударения

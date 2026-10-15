@@ -1,0 +1,85 @@
+# Глаголы для тренировки. level: 1 — самые базовые, 2 — чуть сложнее.
+# type: regular_ar | regular_er | regular_ir | irregular | pronominal
+# forms: presente, порядок лиц: yo, tú, él/ella, nosotros, vosotros, ellos
+# Проверяем формы yo / tú / él / nosotros / ellos (vosotros — опционально).
+
+verbs:
+  # --- 1 спряжение -AR (правильные) ---
+  - {inf: hablar, ru: "говорить", type: regular_ar, level: 1,
+     forms: [hablo, hablas, habla, hablamos, habláis, hablan], example: "Yo hablo un poco de español."}
+  - {inf: trabajar, ru: "работать", type: regular_ar, level: 1,
+     forms: [trabajo, trabajas, trabaja, trabajamos, trabajáis, trabajan], example: "Ella trabaja en una oficina."}
+  - {inf: estudiar, ru: "учиться", type: regular_ar, level: 1,
+     forms: [estudio, estudias, estudia, estudiamos, estudiáis, estudian], example: "Nosotros estudiamos español."}
+  - {inf: ayudar, ru: "помогать", type: regular_ar, level: 1,
+     forms: [ayudo, ayudas, ayuda, ayudamos, ayudáis, ayudan], example: "¿Tú ayudas a tu madre?"}
+  - {inf: tomar, ru: "брать; пить", type: regular_ar, level: 1,
+     forms: [tomo, tomas, toma, tomamos, tomáis, toman], example: "Yo tomo café por la mañana."}
+  - {inf: caminar, ru: "ходить, гулять", type: regular_ar, level: 2,
+     forms: [camino, caminas, camina, caminamos, camináis, caminan], example: "Ellos caminan en el parque."}
+  - {inf: necesitar, ru: "нуждаться", type: regular_ar, level: 2,
+     forms: [necesito, necesitas, necesita, necesitamos, necesitáis, necesitan], example: "Necesito agua, por favor."}
+
+  # --- 2 спряжение -ER (правильные) ---
+  - {inf: comer, ru: "есть", type: regular_er, level: 1,
+     forms: [como, comes, come, comemos, coméis, comen], example: "Nosotros comemos a las dos."}
+  - {inf: beber, ru: "пить", type: regular_er, level: 1,
+     forms: [bebo, bebes, bebe, bebemos, bebéis, beben], example: "Él bebe mucha agua."}
+  - {inf: aprender, ru: "учить(ся)", type: regular_er, level: 1,
+     forms: [aprendo, aprendes, aprende, aprendemos, aprendéis, aprenden], example: "Aprendo palabras nuevas."}
+  - {inf: vender, ru: "продавать", type: regular_er, level: 2,
+     forms: [vendo, vendes, vende, vendemos, vendéis, venden], example: "Ella vende fruta en el mercado."}
+  - {inf: correr, ru: "бегать", type: regular_er, level: 2,
+     forms: [corro, corres, corre, corremos, corréis, corren], example: "Yo corro por la mañana."}
+
+  # --- 3 спряжение -IR (правильные) ---
+  - {inf: vivir, ru: "жить", type: regular_ir, level: 1,
+     forms: [vivo, vives, vive, vivimos, vivís, viven], example: "Yo vivo en Novosibirsk."}
+  - {inf: escribir, ru: "писать", type: regular_ir, level: 1,
+     forms: [escribo, escribes, escribe, escribimos, escribís, escriben], example: "Ella escribe un correo."}
+  - {inf: abrir, ru: "открывать", type: regular_ir, level: 2,
+     forms: [abro, abres, abre, abrimos, abrís, abren], example: "¿Cuándo abres la tienda?"}
+  - {inf: recibir, ru: "получать", type: regular_ir, level: 2,
+     forms: [recibo, recibes, recibe, recibimos, recibís, reciben], example: "Recibo un mensaje."}
+
+  # --- Неправильные ---
+  - {inf: ser, ru: "быть (сущность)", type: irregular, level: 1,
+     forms: [soy, eres, es, somos, sois, son], example: "Yo soy analista.", note: "ser vs estar: ser — что/кто вы есть"}
+  - {inf: estar, ru: "быть (состояние, место)", type: irregular, level: 1,
+     forms: [estoy, estás, está, estamos, estáis, están], example: "¿Dónde estás?", note: "estar — где находитесь, как себя чувствуете"}
+  - {inf: ir, ru: "идти", type: irregular, level: 1,
+     forms: [voy, vas, va, vamos, vais, van], example: "Voy al trabajo."}
+  - {inf: tener, ru: "иметь", type: irregular, level: 1,
+     forms: [tengo, tienes, tiene, tenemos, tenéis, tienen], example: "Tengo dos gatos.", note: "stem-change e→ie (tú, él, ellos)"}
+  - {inf: hacer, ru: "делать", type: irregular, level: 1,
+     forms: [hago, haces, hace, hacemos, hacéis, hacen], example: "¿Qué haces?", note: "yo — hago (не *haco)"}
+  - {inf: poder, ru: "мочь", type: irregular, level: 1,
+     forms: [puedo, puedes, puede, podemos, podéis, pueden], example: "¿Puedes ayudarme?", note: "stem-change o→ue"}
+  - {inf: querer, ru: "хотеть, любить", type: irregular, level: 1,
+     forms: [quiero, quieres, quiere, queremos, queréis, quieren], example: "Quiero aprender español.", note: "stem-change e→ie"}
+  - {inf: decir, ru: "говорить, сказать", type: irregular, level: 2,
+     forms: [digo, dices, dice, decimos, decís, dicen], example: "Él dice la verdad.", note: "yo — digo; stem-change e→i"}
+  - {inf: venir, ru: "приходить", type: irregular, level: 2,
+     forms: [vengo, vienes, viene, venimos, venís, vienen], example: "¿Cuándo vienes?", note: "yo — vengo; stem-change e→ie"}
+  - {inf: saber, ru: "знать (факты)", type: irregular, level: 2,
+     forms: [sé, sabes, sabe, sabemos, sabéis, saben], example: "No sé la respuesta.", note: "yo — sé (с ударением)"}
+  - {inf: poner, ru: "класть, ставить", type: irregular, level: 2,
+     forms: [pongo, pones, pone, ponemos, ponéis, ponen], example: "Pongo el libro en la mesa.", note: "yo — pongo"}
+  - {inf: salir, ru: "выходить", type: irregular, level: 2,
+     forms: [salgo, sales, sale, salimos, salís, salen], example: "Salgo a las nueve.", note: "yo — salgo"}
+  - {inf: ver, ru: "видеть", type: irregular, level: 2,
+     forms: [veo, ves, ve, vemos, veis, ven], example: "Veo una película.", note: "yo — veo; ellos — ven"}
+  - {inf: dar, ru: "давать", type: irregular, level: 2,
+     forms: [doy, das, da, damos, dais, dan], example: "Me das un café.", note: "yo — doy"}
+  - {inf: dormir, ru: "спать", type: irregular, level: 2,
+     forms: [duermo, duermes, duerme, dormimos, dormís, duermen], example: "El niño duerme mucho.", note: "stem-change o→ue (nosotros — dormimos)"}
+  - {inf: jugar, ru: "играть", type: irregular, level: 2,
+     forms: [juego, juegas, juega, jugamos, jugáis, juegan], example: "Los niños juegan fuera.", note: "stem-change u→ue"}
+
+  # --- Возвратные (pronominal) ---
+  - {inf: llamarse, ru: "зваться", type: pronominal, level: 1,
+     forms: [me llamo, te llamas, se llama, nos llamamos, os llamáis, se llaman], example: "Me llamo Tatiana."}
+  - {inf: levantarse, ru: "вставать", type: pronominal, level: 2,
+     forms: [me levanto, te levantas, se levanta, nos levantamos, os levantáis, se levantan], example: "Me levanto a las siete."}
+  - {inf: acostarse, ru: "ложиться спать", type: pronominal, level: 2,
+     forms: [me acuesto, te acuestas, se acuesta, nos acostamos, os acostáis, se acuestan], example: "Me acuesto tarde.", note: "stem-change o→ue"}

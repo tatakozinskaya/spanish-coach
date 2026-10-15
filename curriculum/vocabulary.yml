@@ -1,0 +1,63 @@
+# Лексика: существительные и прилагательные. level: 1 — частотные, 2 — следующий шаг.
+# gender: m | f | f1 (женский род с артиклем el: agua, hambre — из-за ударной a-)
+# plural: форма множественного числа (для заданий на согласование)
+
+nouns:
+  - {es: la casa, ru: "дом", gender: f, plural: las casas, level: 1, example: "Mi casa es grande."}
+  - {es: el agua, ru: "вода", gender: f1, plural: las aguas, level: 1, example: "El agua está fría."}
+  - {es: el libro, ru: "книга", gender: m, plural: los libros, level: 1, example: "El libro es interesante."}
+  - {es: la mesa, ru: "стол", gender: f, plural: las mesas, level: 1, example: "La mesa es nueva."}
+  - {es: el café, ru: "кофе", gender: m, plural: los cafés, level: 1, example: "Un café con leche, por favor."}
+  - {es: la ciudad, ru: "город", gender: f, plural: las ciudades, level: 1, example: "La ciudad es muy grande."}
+  - {es: el trabajo, ru: "работа", gender: m, plural: los trabajos, level: 1, example: "Mi trabajo es interesante."}
+  - {es: la palabra, ru: "слово", gender: f, plural: las palabras, level: 1, example: "Esta palabra es difícil."}
+  - {es: el amigo / la amiga, ru: "друг / подруга", gender: m, plural: los amigos, level: 1, example: "Mi amigo es simpático."}
+  - {es: la familia, ru: "семья", gender: f, plural: las familias, level: 1, example: "Mi familia vive en otra ciudad."}
+  - {es: el día, ru: "день", gender: m, plural: los días, level: 1, example: "Hoy es un buen día."}
+  - {es: la noche, ru: "ночь", gender: f, plural: las noches, level: 1, example: "Buenas noches."}
+  - {es: el tiempo, ru: "время; погода", gender: m, plural: los tiempos, level: 1, example: "No tengo tiempo."}
+  - {es: la mano, ru: "рука (кисть)", gender: f, plural: las manos, level: 1, example: "Dame la mano."}
+  - {es: la comida, ru: "еда", gender: f, plural: las comidas, level: 1, example: "La comida es buena."}
+  - {es: la escuela, ru: "школа", gender: f, plural: las escuelas, level: 2, example: "La escuela está cerca."}
+  - {es: el coche, ru: "машина", gender: m, plural: los coches, level: 2, example: "El coche es rápido."}
+  - {es: la puerta, ru: "дверь", gender: f, plural: las puertas, level: 2, example: "Abre la puerta, por favor."}
+  - {es: la calle, ru: "улица", gender: f, plural: las calles, level: 2, example: "La calle es tranquila."}
+  - {es: el problema, ru: "проблема", gender: m, plural: los problemas, level: 2, example: "No hay problema.", note: "греческое -a → мужской род"}
+  - {es: la noticia, ru: "новость", gender: f, plural: las noticias, level: 2, example: "Es una buena noticia."}
+  - {es: el idioma, ru: "язык", gender: m, plural: los idiomas, level: 2, example: "El español es un idioma bonito."}
+  - {es: el hambre, ru: "голод", gender: f1, plural: —, level: 2, example: "Tengo hambre.", note: "jenский род: tener hambre"}
+  - {es: la semana, ru: "неделя", gender: f, plural: las semanas, level: 2, example: "Esta semana trabajo mucho."}
+  - {es: el dinero, ru: "деньги", gender: m, plural: los dineros, level: 2, example: "No tengo dinero."}
+
+adjectives:
+  - {es: grande, ru: "большой", level: 1, example: "La casa es grande."}
+  - {es: pequeño, ru: "маленький", level: 1, example: "El gato es pequeño."}
+  - {es: bueno, ru: "хороший", level: 1, example: "El café está bueno."}
+  - {es: malo, ru: "плохой", level: 1, example: "El tiempo es malo."}
+  - {es: nuevo, ru: "новый", level: 1, example: "Tengo un libro nuevo."}
+  - {es: fácil, ru: "лёгкий", level: 1, example: "El ejercicio es fácil."}
+  - {es: difícil, ru: "трудный", level: 1, example: "Esta palabra es difícil."}
+  - {es: bonito, ru: "красивый", level: 1, example: "La ciudad es bonita."}
+  - {es: caliente, ru: "горячий", level: 1, example: "El agua está caliente."}
+  - {es: frío, ru: "холодный", level: 1, example: "El café está frío."}
+  - {es: interesante, ru: "интересный", level: 1, example: "El libro es interesante."}
+  - {es: simpático, ru: "симпатичный, милый", level: 1, example: "Mi amigo es simpático."}
+  - {es: importante, ru: "важный", level: 2, example: "Es muy importante."}
+  - {es: rápido, ru: "быстрый", level: 2, example: "El coche es rápido."}
+  - {es: tranquilo, ru: "спокойный", level: 2, example: "La calle es tranquila."}
+  - {es: feliz, ru: "счастливый", level: 2, example: "Hoy estoy feliz."}
+  - {es: cansado, ru: "уставший", level: 2, example: "Estoy muy cansado.", note: "estar + cansado"}
+  - {es: lleno, ru: "полный", level: 2, example: "El vaso está lleno."}
+
+# Готовые пары для заданий на согласование (сущ. + прил.)
+collocations:
+  - {es: "el agua está fría", ru: "вода холодная", note: "f1: el agua fría, но agua fría"}
+  - {es: "una casa grande", ru: "большой дом"}
+  - {es: "un libro interesante", ru: "интересная книга"}
+  - {es: "la ciudad bonita", ru: "красивый город"}
+  - {es: "el buen café", ru: "вкусный кофе", note: "bueno → buen перед м.р. ед.ч."}
+  - {es: "las noticias buenas", ru: "хорошие новости"}
+  - {es: "un problema grande", ru: "большая проблема", note: "problema — мужской род"}
+  - {es: "muy difícil", ru: "очень трудно"}
+  - {es: "tengo hambre", ru: "я голоден", note: "estar/ser не нужен"}
+  - {es: "no tengo tiempo", ru: "у меня нет времени"}
