@@ -27,3 +27,6 @@
 
 ## 2026-10-15 17:20 (Telegram) — 7/10
 - Weak: hablar, poder, tener
+
+## 2026-10-15 20:20 (Telegram) — 5/10
+- Weak: el día, estar, ir, ser, tomar
