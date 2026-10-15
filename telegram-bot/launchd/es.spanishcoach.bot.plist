@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>es.spanishcoach.bot</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/tatakozinskaya/Коворкер/ПАПКА_КОВОРКЕРА/spanish-coach/telegram-bot/spanish_bot.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/tatakozinskaya/Коворкер/ПАПКА_КОВОРКЕРА/spanish-coach/telegram-bot</string>
+
+    <!-- запускать при входе в систему и держать живым -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>ThrottleInterval</key>
+    <integer>15</integer>
+
+    <!-- сеть нужна для Telegram API -->
+    <key>WaitForNetwork</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/tatakozinskaya/Коворкер/ПАПКА_КОВОРКЕРА/spanish-coach/telegram-bot/bot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/tatakozinskaya/Коворкер/ПАПКА_КОВОРКЕРА/spanish-coach/telegram-bot/bot.log</string>
+
+    <!-- перезагружать код файла раз в сутки (обновления из GitHub подтянутся) -->
+    <key>StartInterval</key>
+    <integer>86400</integer>
+</dict>
+</plist>
