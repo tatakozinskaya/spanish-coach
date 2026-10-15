@@ -66,6 +66,18 @@ def load_token():
                 return line.split("=", 1)[1].strip()
     raise SystemExit("Нет токена: %s (строка TELEGRAM_TOKEN=...)" % ENV_FILE)
 
+def load_allowed_ids():
+    """Белый список chat_id через запятую: ALLOWED_CHAT_IDS=123,456 в .env или окружении."""
+    raw = os.environ.get("ALLOWED_CHAT_IDS", "")
+    if not raw and os.path.exists(ENV_FILE):
+        for line in open(ENV_FILE, encoding="utf-8"):
+            if line.strip().startswith("ALLOWED_CHAT_IDS="):
+                raw = line.split("=", 1)[1]
+    ids = {int(x) for x in re.findall(r"-?\d+", raw)}
+    if not ids:
+        raise SystemExit("Не задан ALLOWED_CHAT_IDS — бот не знает, кому отвечать (см. .env)")
+    return ids
+
 def load_states():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, encoding="utf-8") as f:
@@ -107,6 +119,7 @@ def parse_yml(path):
 # ---------- Telegram API ----------
 
 TOKEN = load_token()
+ALLOWED_IDS = load_allowed_ids()
 
 def tg(method, **kw):
     url = "https://api.telegram.org/bot%s/%s" % (TOKEN, method)
@@ -424,12 +437,18 @@ def main():
                 text = msg.get("text")
                 if not cid or not text or msg.get("from", {}).get("is_bot"):
                     continue
+                if cid not in ALLOWED_IDS:
+                    # чужие сообщения игнорируем молча; bcc-заглушка — чтобы не светить whitelist
+                    print("ignored from chat_id %s" % cid, flush=True)
+                    continue
                 st = states.setdefault(str(cid), new_state())
                 handle(cid, text, st, verbs, nouns)
                 states[str(cid)] = st
                 dirty = True
         if (now.tm_hour, now.tm_min) >= (DAILY_HOUR, DAILY_MIN):
             for k, st in states.items():
+                if int(k) not in ALLOWED_IDS:
+                    continue
                 if st.get("last_daily") != daily_key and st.get("left", 0) <= 0:
                     st["last_daily"] = daily_key
                     send(int(k), "🕒 <b>¡Buenas tardes!</b> 15:00 — время тренировки.\n\n"

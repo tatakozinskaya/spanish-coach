@@ -4,7 +4,8 @@
 import random
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-os.environ["TELEGRAM_TOKEN"] = "x"  # не нужен для теста
+os.environ["TELEGRAM_TOKEN"] = "x"       # не нужен для теста
+os.environ["ALLOWED_CHAT_IDS"] = "1"     # не нужен для теста
 import spanish_bot as B
 
 verbs = B.parse_yml(os.path.join(B.CURRICULUM, "verbs.yml"))
