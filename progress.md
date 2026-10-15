@@ -18,3 +18,6 @@
 - Errors: ayudar перепутан с hablar («Ты помогаешь» → *tú hablas); hacer (yo → *haco)
 - Weak: ayudar, hacer, tú (местоимение с ударением)
 - Notes: hablamos и el agua fría — верно; согласование рода и -AR мыслится хорошо
+
+## 2026-10-15 12:50 (Telegram) — 4/10
+- Weak: ayudar, beber, querer, tomar

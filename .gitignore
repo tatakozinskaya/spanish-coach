@@ -1,0 +1,6 @@
+# секреты и локальное состояние бота — не в git
+telegram-bot/.env
+telegram-bot/state.json*
+telegram-bot/*.lock
+__pycache__/
+*.pyc
