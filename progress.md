@@ -21,3 +21,6 @@
 
 ## 2026-10-15 12:50 (Telegram) — 4/10
 - Weak: ayudar, beber, querer, tomar
+
+## 2026-10-15 13:36 (Telegram) — 7/10
+- Weak: tener, tomar
