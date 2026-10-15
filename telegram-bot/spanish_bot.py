@@ -309,6 +309,29 @@ def check(ex, answer):
 
 # ---------- сессия ----------
 
+REPO = os.path.abspath(os.path.join(HERE, os.pardir))
+
+def git_push_session():
+    """Закоммитить прогресс и запушить в GitHub (SSH). Ошибки — только в лог."""
+    import subprocess
+    env = dict(os.environ, GIT_SSH_COMMAND="ssh -o BatchMode=yes",
+               GIT_AUTHOR_NAME="Tata Kozinska", GIT_AUTHOR_EMAIL="t.kozinskaya@2gis.ru",
+               GIT_COMMITTER_NAME="Tata Kozinska", GIT_COMMITTER_EMAIL="t.kozinskaya@2gis.ru")
+    try:
+        subprocess.run(["git", "add", "progress.md"], cwd=REPO, env=env,
+                       capture_output=True, timeout=30, check=True)
+        r = subprocess.run(["git", "commit", "-m",
+                            "progress: сессия %s" % time.strftime("%Y-%m-%d %H:%M")],
+                           cwd=REPO, env=env, capture_output=True, timeout=30)
+        if r.returncode != 0:
+            return  # нечего коммитить
+        p = subprocess.run(["git", "push", "-q"], cwd=REPO, env=env,
+                           capture_output=True, timeout=60)
+        if p.returncode != 0:
+            print("git push failed:", p.stderr.decode()[:200], flush=True)
+    except Exception as ex:
+        print("git_push_session:", ex, flush=True)
+
 def give_ex(state, verbs, nouns):
     if state["repeat"] and random.random() < 0.6:
         word = state["repeat"].pop(0)
@@ -336,6 +359,7 @@ def finish_session(state):
                 ", ".join(sorted(set(state["wrong"]))) or "нет"))
     except Exception as ex:
         print("progress:", ex, flush=True)
+    git_push_session()
     weak = ", ".join(sorted(set(state["wrong"]))) or "нет 🎉"
     return ("🏁 Итог: <b>%d/%d</b> (%d%%).\nЗона внимания: <b>%s</b> — выпадет чаще "
             "в следующий раз.\n¡Muy bien, Tatiana! 💪"
