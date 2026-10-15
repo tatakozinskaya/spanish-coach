@@ -24,3 +24,6 @@
 
 ## 2026-10-15 13:36 (Telegram) — 7/10
 - Weak: tener, tomar
+
+## 2026-10-15 17:20 (Telegram) — 7/10
+- Weak: hablar, poder, tener
