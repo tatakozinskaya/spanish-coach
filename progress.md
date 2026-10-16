@@ -33,3 +33,6 @@
 
 ## 2026-10-15 20:26 (Telegram) — 9/10
 - Weak: ayudar
+
+## 2026-10-16 11:21 (Telegram) — 7/10
+- Weak: ayudar, estudiar, ir
