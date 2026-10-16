@@ -55,4 +55,45 @@ assert ok2 == "ok"
 ok3, _ = B.check(ex, "hablas de español")
 assert ok3 == "ok", "no-pronoun variant must pass"
 
+# ---------- перевод фразы в ответе проверки ----------
+# каждое задание несёт перевод, и он попадает в ответ бота при ok/fail
+missing_ru = []
+for i in range(400):
+    ex = B.next_exercise(verbs, nouns)
+    if not ex.get("ru"):
+        missing_ru.append((ex["type"], ex.get("word")))
+assert not missing_ru, "нет перевода: %s" % missing_ru[:5]
+
+for i in range(200):
+    ex = B.next_exercise(verbs, nouns)
+    if ex["type"] == "mcq":
+        ok_v, msg_ok = B.check(ex, ex["letter"])
+        bad = "a" if ex["letter"] == "a" else "a"
+        fail_v, msg_fail = B.check(ex, "zzz-не-вариант")
+    elif ex["type"] == "error":
+        ok_v, msg_ok = B.check(ex, ex["show"])
+        fail_v, msg_fail = B.check(ex, "yo comer coche")
+    else:
+        ok_v, msg_ok = B.check(ex, ex["refs"][0])
+        fail_v, msg_fail = B.check(ex, "plimplim")
+    assert ok_v == "ok" and ex["ru"] in msg_ok, (ex, msg_ok)
+    assert fail_v == "fail" and ex["ru"] in msg_fail, (ex, msg_fail)
+print("перевод есть во всех ok/fail-ответах ✔")
+
+# перевод звучит по-русски (частные случаи: ser/tener/llamarse)
+def ru_of_ex(inf, person, tail=None):
+    return B.cap_ru(B.ru_phrase(inf, person, tail))
+
+assert ru_of_ex("ser", "yo", "de Rusia") == "Я — из России"
+assert ru_of_ex("tener", "él", "dos gatos") == "У него есть две кошки"
+assert ru_of_ex("llamarse", "yo") == "Меня зовут"
+assert ru_of_ex("ir", "él", "al trabajo") == "Он идёт на работу"
+assert ru_of_ex("necesitar", "yo", "agua") == "Я нуждаюсь в воде"
+assert ru_of_ex("hablar", "nosotros", "de español") == "Мы говорим по-испански"
+assert ru_of_ex("poder", "tú", "ayudarme") == "Ты можешь помочь"
+print("частные случаи перевода ✔")
+for ex in [B.next_exercise(verbs, nouns) for _ in range(6)]:
+    ref = ex.get("show") or ex.get("correct", "")
+    print("  ·", ex["prompt"].replace("\n", " ")[:58], "→", ref, "|", ex["ru"])
+
 print("ALL TESTS PASSED ✔")

@@ -42,6 +42,7 @@ TAILS_ES = {
     "decir": "la verdad", "venir": "a las cinco", "saber": "la respuesta",
     "dormir": "mucho", "jugar": "en el parque", "ver": "una película",
     "dar": "un café", "poner": "el libro en la mesa", "salir": "a las nueve",
+    "abrir": "la puerta", "vender": "un coche",
 }
 TAILS_RU = {
     "de español": "по-испански", "en una oficina": "в офисе", "español": "испанский",
@@ -51,8 +52,88 @@ TAILS_RU = {
     "en casa": "дома", "al trabajo": "на работу", "dos gatos": "двух кошек",
     "los deberes": "уроки", "ayudarme": "мне помочь", "aprender español": "учить испанский",
     "la verdad": "правду", "a las cinco": "в пять", "mucho": "много",
-    "una película": "фильм", "la respuesta": "ответ",
+    "una película": "фильм", "la respuesta": "ответ", "un mensaje": "сообщение",
+    "en el parque": "в парке", "un café": "кофе", "a las nueve": "в девять",
+    "el libro en la mesa": "книгу на стол", "la puerta": "дверь", "un coche": "машину",
 }
+
+# ---------- русские переводы фраз (для разбора ответа) ----------
+# Формы по лицам в том же порядке, что PERSON_IDX: yo, tú, él, nosotros, ellos.
+RU_FORMS = {
+    "hablar": "говорю, говоришь, говорит, говорим, говорят",
+    "trabajar": "работаю, работаешь, работает, работаем, работают",
+    "estudiar": "изучаю, изучаешь, изучает, изучаем, изучают",
+    "ayudar": "помогаю, помогаешь, помогает, помогаем, помогают",
+    "tomar": "пью, пьёшь, пьёт, пьём, пьют",
+    "beber": "пью, пьёшь, пьёт, пьём, пьют",
+    "comer": "ем, ешь, ест, едим, едят",
+    "aprender": "учу, учишь, учит, учим, учите",
+    "vivir": "живу, живёшь, живёт, живём, живут",
+    "escribir": "пишу, пишешь, пишет, пишем, пишут",
+    "correr": "бегаю, бегаешь, бегает, бегаем, бегают",
+    "necesitar": "нуждаюсь, нуждаешься, нуждается, нуждаемся, нуждаются",
+    "recibir": "получаю, получаешь, получает, получаем, получают",
+    "caminar": "гуляю, гуляешь, гуляет, гуляем, гуляют",
+    "ir": "иду, идёшь, идёт, идём, идут",
+    "hacer": "делаю, делаешь, делает, делаем, делают",
+    "poder": "могу, можешь, может, можем, могут",
+    "querer": "хочу, хочешь, хочет, хотим, хотят",
+    "decir": "говорю, говоришь, говорит, говорим, говорят",
+    "venir": "прихожу, приходишь, приходит, приходим, приходят",
+    "saber": "знаю, знаешь, знает, знаем, знают",
+    "poner": "кладу, кладёшь, кладёт, кладём, кладут",
+    "salir": "выхожу, выходишь, выходит, выходим, выходят",
+    "dormir": "сплю, спишь, спит, спим, спят",
+    "jugar": "играю, играешь, играет, играем, играют",
+    "ver": "смотрю, смотришь, смотрит, смотрим, смотрят",
+    "dar": "даю, даёшь, даёт, даём, дают",
+    "abrir": "открываю, открываешь, открывает, открываем, открывают",
+    "vender": "продаю, продаёшь, продаёт, продаём, продают",
+    "levantarse": "встаю, встаёшь, встаёт, встаём, встают",
+    "acostarse": "ложусь спать, ложишься спать, ложится спать, ложимся спать, ложатся спать",
+}
+# ПереводRussian-дополнения, если буквальный вариант не по-русски.
+RU_TAIL_FIX = {("necesitar", "agua"): "в воде", ("poder", "ayudarme"): "помочь",
+               ("tener", "dos gatos"): "две кошки"}
+# Личное местоимение по-русски не нужно (иначе «Я меня зовут»).
+RU_NO_SUBJ = {"llamarse": "меня зовут, тебя зовут, его зовут, нас зовут, их зовут"}
+RU_TENER = "у меня, у тебя, у него, у нас, у них"
+# Индекс в 5-элементных списках переводов (vosotros не переводим)
+RU_IDX = {"yo": 0, "tú": 1, "él": 2, "nosotros": 3, "ellos": 4}
+
+
+def ru_phrase(inf, person, tail_es=None):
+    """Естественный перевод фразы «SUBJ form tail»: «Она идёт на работу»."""
+    i = RU_IDX.get(person, 0)
+    tail_ru = ""
+    if tail_es:
+        tail_ru = RU_TAIL_FIX.get((inf, tail_es), TAILS_RU.get(tail_es, ""))
+    subj = SUBJ_RU[person]
+    if inf == "ser":
+        txt = "%s — %s" % (subj, tail_ru) if tail_ru else "%s есть (кто-то)" % subj
+    elif inf == "estar":
+        txt = "%s %s" % (subj, tail_ru) if tail_ru else "%s находится (где-то)" % subj
+    elif inf == "tener":
+        who = RU_TENER.split(", ")[i]
+        txt = "%s есть %s" % (who, tail_ru) if tail_ru else "%s есть (что-то)" % who
+    elif inf in RU_NO_SUBJ:
+        txt = RU_NO_SUBJ[inf].split(", ")[i]
+    else:
+        forms = RU_FORMS.get(inf)
+        if not forms:
+            return ""
+        txt = "%s %s %s" % (subj, forms.split(", ")[i], tail_ru)
+    return re.sub(r"\s+", " ", txt).strip()
+
+
+def cap_ru(s):
+    return (s[:1].upper() + s[1:]) if s else s
+
+
+def ru_line(ex):
+    """Строка перевода фразы, с которой шла работа ('' если перевода нет)."""
+    ru = (ex.get("ru") or "").strip()
+    return "🇷🇺 <i>%s</i>" % ru if ru else ""
 
 # ---------- config / state ----------
 
@@ -148,12 +229,12 @@ def gen_translate(verbs):
     person = random.choice(list(PERSON_IDX))
     form = v["forms"][PERSON_IDX[person]]
     tail = TAILS_ES[v["inf"]]
-    ru = "%s %s %s" % (SUBJ_RU[person], ru_of(v), TAILS_RU.get(tail, ""))
-    ru = re.sub(r"\s+", " ", ru).strip()
+    ru = cap_ru(ru_phrase(v["inf"], person, tail))
     full = "%s %s %s" % (SUBJ[person], form, tail)
     no_pron = "%s %s" % (form, tail)
     return {"type": "translate", "word": v["inf"], "prompt": "✍️ Переведи на испанский:\n«%s»" % ru,
-            "refs": [norm(full), norm(no_pron)], "show": "%s." % full}
+            "refs": [norm(full), norm(no_pron)], "show": "%s." % full,
+            "ru": ru}
 
 def gen_conjugation(verbs):
     pool = [v for v in verbs if v.get("level") == 1] or verbs
@@ -165,7 +246,8 @@ def gen_conjugation(verbs):
     form = v["forms"][PERSON_IDX[person]]
     return {"type": "conjugation", "word": v["inf"],
             "prompt": "🔤 Раскрой скобки: %s ____ (%s)" % (SUBJ[person], v["inf"]),
-            "refs": [norm(form)], "show": "%s." % form}
+            "refs": [norm(form)], "show": "%s %s." % (SUBJ[person], form),
+            "ru": cap_ru(ru_phrase(v["inf"], person))}
 
 def gen_mcq(verbs, nouns):
     if random.random() < 0.6:
@@ -183,7 +265,8 @@ def gen_mcq(verbs, nouns):
         return {"type": "mcq", "word": v["inf"],
                 "prompt": "☝️ Выбери вариант: %s ____ %s\n%s" % (SUBJ[person], tail, line),
                 "letter": letters[opts.index(correct)], "correct": correct,
-                "opts": {letters[i]: o for i, o in enumerate(opts)}}
+                "opts": {letters[i]: o for i, o in enumerate(opts)},
+                "ru": cap_ru(ru_phrase(v["inf"], person, tail))}
     pool = [n for n in nouns if n.get("level") == 1] or nouns
     n = random.choice(pool)
     correct_art = "el" if n["gender"] in ("m", "f1") else "la"
@@ -195,7 +278,8 @@ def gen_mcq(verbs, nouns):
             "prompt": "☝️ Выбери вариант: ____ %s\na) %s   b) %s" % (noun, opts[0], opts[1]),
             "letter": "ab"[opts.index("%s %s" % (correct_art, noun))],
             "correct": "%s %s" % (correct_art, noun),
-            "opts": {"a": opts[0], "b": opts[1]}}
+            "opts": {"a": opts[0], "b": opts[1]},
+            "ru": "это «%s»" % n.get("ru", "")}
 
 BROKEN = {"hago": "haco", "tengo": "teno", "voy": "vovo", "soy": "so",
           "duermo": "dormo", "juego": "jugo", "salgo": "salo", "pongo": "pono",
@@ -222,7 +306,8 @@ def gen_error(verbs):
         return {"type": "error", "word": v["inf"],
                 "prompt": "🔎 Найди ошибку: «%s»" % bad,
                 "refs": [norm(sent)], "show": sent, "broken": broken,
-                "correct": correct, "note": hint}
+                "correct": correct, "note": hint,
+                "ru": cap_ru(ru_phrase(v["inf"], person, TAILS_ES[v["inf"]]))}
     return gen_conjugation(verbs)
 
 def next_exercise(verbs, nouns):
@@ -263,25 +348,28 @@ def check(ex, answer):
             good = word.strip() == ex["letter"]
         else:
             good = word == norm(ex["correct"])
+        extra = ("\n" + ru_line(ex)) if ru_line(ex) else ""
         if good:
-            return "ok", "✅ Правильно! <b>%s</b>" % ex["correct"]
-        return "fail", ("❌ Правильный ответ: <b>%s) %s</b>" % (ex["letter"], ex["correct"]))
+            return "ok", "✅ Правильно! <b>%s</b>%s" % (ex["correct"], extra)
+        return "fail", ("❌ Правильный ответ: <b>%s) %s</b>%s"
+                        % (ex["letter"], ex["correct"], extra))
 
     if ex["type"] == "error":
+        extra = ("\n" + ru_line(ex)) if ru_line(ex) else ""
         targets = ex["refs"] + [norm(ex["show"])]
         if a in targets:
             # совпало по буквам — но все ли ударения на месте?
             if accent_lacking(ex["show"]):
                 return "again", ("⚠️ Почти! Пропущено ударение/ñ — в испанском это "
                                  "другие слова (tú ≠ tu, año ≠ ano).\nНапиши ещё раз 👇")
-            return "ok", "✅ Верно! <b>%s</b>" % ex["show"]
+            return "ok", "✅ Верно! <b>%s</b>%s" % (ex["show"], extra)
         fixed = answer
         if ex.get("broken") and ex["broken"].strip() in answer:
             fixed = answer.replace(ex["broken"].strip(), ex["correct"])
         if norm(fixed) in targets:
-            return "ok", "✅ Верно! <b>%s</b>" % ex["show"]
-        return "fail", ("❌ Ошибка была: <i>%s → %s</i>\nПравильно: <b>%s</b>%s"
-                        % (ex["broken"], ex["correct"], ex["show"],
+            return "ok", "✅ Верно! <b>%s</b>%s" % (ex["show"], extra)
+        return "fail", ("❌ Ошибка была: <i>%s → %s</i>\nПравильно: <b>%s</b>%s%s"
+                        % (ex["broken"], ex["correct"], ex["show"], extra,
                            ("\n💡 " + ex["note"]) if ex.get("note") else ""))
 
     # translate / conjugation
@@ -300,12 +388,14 @@ def check(ex, answer):
                                  "слова: <b>tú</b> «ты» ≠ <i>tu</i> «твой», "
                                  "<b>año</b> «год» ≠ <i>ano</i>.\nНапиши ещё раз "
                                  "правильно 👇")
-        return "ok", "✅ Отлично! <b>%s</b>" % ex["show"]
+        extra = ("\n" + ru_line(ex)) if ru_line(ex) else ""
+        return "ok", "✅ Отлично! <b>%s</b>%s" % (ex["show"], extra)
     if any(strip_acc(a) == strip_acc(r) for r in ex["refs"]):
         return "again", ("⚠️ Почти! Буквы те, но потеряны ударения/ñ. В испанском "
                          "это меняет смысл: <b>tú</b> «ты» ≠ <i>tu</i> «твой», "
                          "<b>sí</b> «да» ≠ <i>si</i> «если».\nНапиши ещё раз 👇")
-    return "fail", "❌ Правильно: <b>%s</b>" % ex["show"]
+    extra = ("\n" + ru_line(ex)) if ru_line(ex) else ""
+    return "fail", "❌ Правильно: <b>%s</b>%s" % (ex["show"], extra)
 
 # ---------- сессия ----------
 
