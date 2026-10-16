@@ -39,3 +39,6 @@
 
 ## 2026-10-16 11:27 (Telegram) — 5/10
 - Weak: ayudar, hablar, ir, vivir
+
+## 2026-10-16 14:49 (Telegram) — 8/10
+- Weak: ayudar, poder
