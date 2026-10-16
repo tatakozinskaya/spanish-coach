@@ -42,3 +42,8 @@
 
 ## 2026-10-16 14:49 (Telegram) — 8/10
 - Weak: ayudar, poder
+
+## 2026-10-16 15:10 (Коворкер) — 5/10
+- Errors: ayudar (*aydas, missing u; порядок *ayudas me → me ayudas); el agua (*la agua → el agua, f1); ser/estar (*soy muy cansado → estoy muy cansado); tener tiempo (*tengo la … → tengo tiempo, без артикля); el problema (*la problema → el problema, греческое -a)
+- Weak: ayudar, el problema / артикль у исключений (el agua, el idioma), ser ↔ estar, порядок местоимений (me ayudas)
+- Notes: за сессию 4 задания без ошибки с первого раза (hago, bonita, bebemos, quiere); el agua и estar после разбора переписаны верно; хорошо идут правильные -AR/-ER и согласование прилагательного (ciudad bonita); на el problema переписывание не дождались — повторить в следующий раз
