@@ -57,3 +57,6 @@
 - Errors: нет содержательных ошибок; одна мелочь — ¿ с пробелом (*¿ Puedes ayudarme? → ¿Puedes ayudarme?)
 - Weak: ayudar (прошла верно 2 раза подряд — ещё 1 раз без ошибки и уйдёт из зоны внимания), el agua / el idioma / el problema (артикль у исключений — сегодня верно), ser ↔ estar (верно), порядок местоимений (me ayudas — верно)
 - Notes: сильная сессия, все задания 10/10 с первого раза; уверенно: yo ayudo, tenemos, puedes ayudarme, el agua fría, El agua está fría, Él habla español, el idioma/el problema; замечание для агента — задание «No hay ___ problema» с вариантами артикля неудачно (после hay артикль не ставится) — в следующий раз брать без hay
+
+## 2026-10-17 23:16 (Telegram) — 6/10
+- Weak: ayudar, ir, la mesa, vivir
