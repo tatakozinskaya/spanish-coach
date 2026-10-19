@@ -60,3 +60,6 @@
 
 ## 2026-10-17 23:16 (Telegram) — 6/10
 - Weak: ayudar, ir, la mesa, vivir
+
+## 2026-10-19 10:09 (Telegram) — 8/10
+- Weak: ir, ser
