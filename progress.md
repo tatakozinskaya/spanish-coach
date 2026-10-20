@@ -71,3 +71,7 @@
 
 ## 2026-10-20 10:53 (Telegram) — 9/10
 - Weak: beber
+## 2026-10-20 17:00 (Коворкер) — 7/10
+- Errors: vivir (tú → *vive вместо vives — уже третий раз эта форма, но исправлено сразу, формула vivo/vives/vive отработана); ser ↔ estar (*soy muy cansado → estoy muy cansado); ciudad (*cuidad, затем *entra ciudad вместо en otra)
+- Weak: vivir — форма tú (vives) держать до 3 верных подряд; estar для состояния (cansado); написание ciudad (-dad); предлог en + otra в переводе
+- Notes: 7 заданий с первого раза: beben, hago, el agua está fría (артикль и согласование), me llamo, estamos en casa, El agua está fría (find_the_error), van al parque; otra больше не теряется, но пострадала орфография; возвратные с местоимением — уверенно; в следующей сессии: vivir (vives) в переводе, estar + состояние, существительные на -dad
