@@ -4,3 +4,5 @@ telegram-bot/state.json*
 telegram-bot/*.lock
 __pycache__/
 *.pyc
+telegram-bot/bot.log
+.DS_Store
