@@ -20,10 +20,20 @@ CURRICULUM = os.path.join(HERE, os.pardir, "curriculum")
 PROGRESS = os.path.join(HERE, os.pardir, "progress.md")
 STATE_FILE = os.path.join(HERE, "state.json")
 ENV_FILE = os.path.join(HERE, ".env")
+LOG_FILE = os.path.join(HERE, "bot.log")
 
 SESSION_SIZE = 10
 DAILY_HOUR, DAILY_MIN = 15, 0
 POLL_TIMEOUT = 25
+
+# --- устойчивость к зависаниям сети ---
+START_TS = time.time()          # чтобы не обрабатывать очередь, накопившуюся за простой
+STALE_EXIT = 150                # сек без прогресса цикла -> самоубийство, launchd поднимет новый процесс
+MAX_MSG_AGE = 120               # сообщения старше этого — «из прошлого», не выполняем
+SESSION_DEDUP = 90              # повторный /session раньше — не перезапускает сессию
+LOG_MAX = 5 * 1024 * 1024       # ротация bot.log на старте
+HEARTBEAT = [time.time()]       # отметка последней итерации главного цикла
+ERR_LOG, ERR_COUNT = {}, {}     # троттлинг повторяющихся ошибок сети
 
 ACC = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ñ": "n", "ü": "u"}
 ACC_TABLE = str.maketrans(ACC)
@@ -173,7 +183,8 @@ def save_states(states):
 
 def new_state():
     return {"exercise": None, "left": 0, "correct": 0, "asked": 0,
-            "wrong": [], "repeat": [], "retries": 0, "last_daily": ""}
+            "wrong": [], "repeat": [], "retries": 0, "last_daily": "",
+            "last_start_ts": 0}
 
 # ---------- curriculum ----------
 
@@ -210,8 +221,33 @@ def tg(method, **kw):
                                     timeout=POLL_TIMEOUT + 10) as r:
             return json.load(r)
     except Exception as ex:
-        print("tg %s error: %s" % (method, ex), flush=True)
+        # не спамим в лог: не чаще одной ошибки такого текста в минуту
+        now = time.time()
+        key = str(ex)[:60]
+        last = ERR_LOG.get(key, 0)
+        if now - last >= 60:
+            ERR_LOG[key] = now
+            suppressed = ERR_COUNT.pop(key, 0)
+            print("tg %s error: %s%s" % (method, ex,
+                  " (x%d подавлено)" % suppressed if suppressed else ""), flush=True)
+        else:
+            ERR_COUNT[key] = ERR_COUNT.get(key, 0) + 1
         return {"ok": False}
+
+def start_watchdog():
+    """Если главный цикл не делает итераций STALE_EXIT секунд — соединение с
+    Telegram «залипло» (poll навсегда). Выходим с кодом 1: launchd (KeepAlive)
+    поднимет свежий процесс. Обычные сетевые таймауты watchdog не трогает:
+    при них цикл крутится и heartbeat обновляется."""
+    import threading
+    def beat():
+        while True:
+            time.sleep(30)
+            stuck = time.time() - HEARTBEAT[0]
+            if stuck > STALE_EXIT:
+                print("watchdog: цикл висит %.0f с, перезапускаюсь" % stuck, flush=True)
+                os._exit(1)
+    threading.Thread(target=beat, daemon=True).start()
 
 def send(chat_id, text):
     tg("sendMessage", chat_id=chat_id, text=text, parse_mode="HTML",
@@ -435,7 +471,8 @@ def give_ex(state, verbs, nouns):
     return state["exercise"]
 
 def start_session(state, verbs, nouns):
-    state.update(left=SESSION_SIZE, correct=0, asked=0, wrong=[], retries=0)
+    state.update(left=SESSION_SIZE, correct=0, asked=0, wrong=[], retries=0,
+                 last_start_ts=time.time())
     state["last_daily"] = time.strftime("%Y-%m-%d")
     ex = give_ex(state, verbs, nouns)
     return ("🎯 <b>¡Vamos!</b> Тренировка: %d заданий. Проверка строгая — "
@@ -481,6 +518,11 @@ def handle(cid, text, state, verbs, nouns):
              % (state["asked"], SESSION_SIZE, state["correct"], state["left"])
              if state["left"] else "Сессия не идёт. /session — начать!")
     elif low.startswith("/session") or low in ("давай", "начали", "поехали"):
+        now_ts = time.time()
+        if state.get("left", 0) > 0 and now_ts - state.get("last_start_ts", 0) < SESSION_DEDUP:
+            send(cid, "Сессия уже идёт — осталось %d заданий 💪\n(повторный /session пропущен)"
+                 % state["left"])
+            return
         send(cid, start_session(state, verbs, nouns))
     elif low in ("next", "дальше", "пропусти", "skip") and state["left"]:
         state["left"] -= 1
@@ -527,16 +569,24 @@ def handle(cid, text, state, verbs, nouns):
 # ---------- главный цикл ----------
 
 def main():
+    # ротация раздутого лога на старте
+    try:
+        if os.path.exists(LOG_FILE) and os.path.getsize(LOG_FILE) > LOG_MAX:
+            os.replace(LOG_FILE, LOG_FILE + ".1")
+    except Exception:
+        pass
     verbs = parse_yml(os.path.join(CURRICULUM, "verbs.yml"))
     nouns = parse_yml(os.path.join(CURRICULUM, "vocabulary.yml"))
     nouns = [n for n in nouns if "gender" in n]
     adjs = [n for n in nouns if "gender" not in n]
     print("Bot up: %d verbs, %d nouns" % (len(verbs), len(nouns)), flush=True)
+    start_watchdog()
     offset = 0
     offset_file = STATE_FILE + ".offset"
     if os.path.exists(offset_file):
         offset = int(open(offset_file).read().strip() or 0)
     while True:
+        HEARTBEAT[0] = time.time()
         r = tg("getUpdates", offset=offset + 1, timeout=POLL_TIMEOUT,
                allowed_updates='["message"]')
         now = time.localtime()
@@ -554,6 +604,14 @@ def main():
                 if cid not in ALLOWED_IDS:
                     # чужие сообщения игнорируем молча; bcc-заглушка — чтобы не светить whitelist
                     print("ignored from chat_id %s" % cid, flush=True)
+                    continue
+                # сообщения, накопившиеся за простой бота, не выполняем:
+                # они из «прошлого», пользователь уже всё видел в Telegram
+                if msg.get("date", 0) < START_TS - MAX_MSG_AGE:
+                    print("stale msg skipped (chat %s, %ds old)"
+                          % (cid, time.time() - msg["date"]), flush=True)
+                    dirty = True
+                    states.setdefault(str(cid), new_state())
                     continue
                 st = states.setdefault(str(cid), new_state())
                 handle(cid, text, st, verbs, nouns)

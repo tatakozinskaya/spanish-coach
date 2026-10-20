@@ -14,14 +14,12 @@
     <key>WorkingDirectory</key>
     <string>/Users/tatakozinskaya/Коворкер/ПАПКА_КОВОРКЕРА/spanish-coach/telegram-bot</string>
 
-    <!-- запускать при входе в систему и держать живым -->
+    <!-- запускать при входе в систему -->
     <key>RunAtLoad</key>
     <true/>
+    <!-- держать живым при любом выходе (watchdog выходит с кодом 1 при зависании) -->
     <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
+    <true/>
     <key>ThrottleInterval</key>
     <integer>15</integer>
 

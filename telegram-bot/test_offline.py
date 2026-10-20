@@ -96,4 +96,24 @@ for ex in [B.next_exercise(verbs, nouns) for _ in range(6)]:
     ref = ex.get("show") or ex.get("correct", "")
     print("  ·", ex["prompt"].replace("\n", " ")[:58], "→", ref, "|", ex["ru"])
 
+# ---------- дедуп /session и устойчивость ----------
+sent = []
+B.send = lambda cid, text: sent.append(text)
+
+st = B.new_state()
+B.handle(1, "/session", st, verbs, nouns)
+n1 = len(sent)
+assert n1 == 1 and "¡Vamos!" in sent[-1], sent
+B.handle(1, "/session", st, verbs, nouns)   # повтор сразу — не перезапускаем
+assert len(sent) == 2 and "Сессия уже идёт" in sent[-1], sent
+assert st["left"] == B.SESSION_SIZE and st["exercise"]  # сессия не перезапущена
+st["last_start_ts"] -= B.SESSION_DEDUP + 1  # «прошло» больше окна дедупа
+B.handle(1, "/session", st, verbs, nouns)
+assert len(sent) == 3 and "¡Vamos!" in sent[-1]
+print("дедуп /session ✔")
+
+# watchdog-константы: watchdog должен срабатывать раньше зависания polling-стека
+assert B.STALE_EXIT > B.POLL_TIMEOUT + 10, "watchdog может срабатывать на штатном ожидании"
+assert 0 < B.MAX_MSG_AGE < 3600
+
 print("ALL TESTS PASSED ✔")
