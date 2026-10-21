@@ -81,3 +81,7 @@
 
 ## 2026-10-21 09:50 (Telegram) — 10/10
 - Weak: нет
+## 2026-10-21 15:00 (Коворкер) — 10/10
+- Errors: нет — все 10 заданий с первого раза, без ошибок в ударениях/ñ/пунктуации
+- Weak: vivir закрыт (tú → vives верно с первого раза, плюс find_the_error yo vives → yo vivo) — держать ещё одну сессию для правила трёх верных; estar + состояние (está cansada) верно; ciudad (написание и согласование bonita) верно
+- Notes: сильная сессия: Tú vives en otra ciudad, hago, está (MC), el agua (MC), La ciudad es bonita, queremos, Ella trabaja en la escuela, No tengo tiempo, Yo vivo en Novosibirsk, El agua está fría; артикль у исключений (el agua) и согласование прилагательного — уверенно дважды; в следующей сессии дать ser/estar с прилагательными и ещё раз vives для закрепления
