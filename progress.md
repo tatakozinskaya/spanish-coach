@@ -96,3 +96,6 @@
 
 ## 2026-10-23 15:03 (Telegram) — 8/10
 - Weak: estudiar, llamarse
+
+## 2026-10-23 23:08 (Telegram) — 9/10
+- Weak: querer
