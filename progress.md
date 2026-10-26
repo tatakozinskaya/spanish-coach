@@ -99,3 +99,8 @@
 
 ## 2026-10-23 23:08 (Telegram) — 9/10
 - Weak: querer
+
+## 2026-10-26 10:20 (Коворкер) — 6/10
+- Errors: querer (после исправления *quere написал *quire вместо quiere — e→ie держит только с подсказкой); ser↔estar (*El café es muy caliente → está — состояние с muy); el dinero («У нас нет денег» → *No tenemos deberes — слово dinero не вспомнилось, правильно: no tenemos dinero); María без ударения (*Maria → María — имена собственные с ударением)
+- Weak: querer (формы e→ie: quiero/quieres/quiere — третий заход в зоне внимания), estar + состояние (está caliente), el dinero / tener без артикля (no tenemos dinero), ударение в именах собственных (María)
+- Notes: закрыты estudiar (estudias) и llamarse (se llama, se llama María) — оба верно, llamarse 2 раза подряд без ошибки — ещё 1 чистый проход и уходит из зоны внимания; vivir (Tú vives en otra ciudad) уверенно — последний контрольный прогон правила трёх верных; el problema → los problemas (MC) верно; dinero после разбора во втором задании (MC) верно; агенту: в MC не давать дублирующихся вариантов (в задании 3 совпали a и b)
