@@ -107,3 +107,8 @@
 
 ## 2026-10-26 10:24 (Telegram) — 10/10
 - Weak: нет
+
+## 2026-10-26 15:00 (Коворкер) — 6/10
+- Errors: amiga/hermana (перевод «Мою подругу зовут Мария» → *Mi hermana se llama María; se llama и María с ударением верны); el dinero (написание → *dinaros вместо dinero); множественное число исключения (el problema → *Las problemas ... grande вместо Los problemas son muy grandes — артикль м.р. + окончание -s у прилагательного на -e); прилагательные на -e (caliente → *calienta; не имеют женской формы) + потеряно muy в «Вода очень горячая»
+- Weak: el dinero (написание), пара amiga ↔ hermana, мн. число у el problema (los problemas grandes), прилагательные на -e (caliente, grande, difícil) — не имеют женской формы, estar + muy + состояние (está muy caliente)
+- Notes: querer закрывается — quieres (раскрытие скобок) и Ella quiere beber agua оба верно с первого раза, третий заход в зоне внимания прошёл, ещё один чистый прогон и уходит; poder уверенно (podes→puede в find_the_error, podemos без ue); estar с состоянием держит (está muy cansada — MC верно, El agua está — выбор глагола верен, подвела только форма прилагательного); agua без артикля в «beber agua» верно; llamarse — форма se llama верна, ошибка была в существительном, оставляем в зоне внимания ещё на один прогон; агенту: в MC про род артикля не смешивать в одном варианте две разные ошибки (число прилагательного перекрывает проверку на род)
