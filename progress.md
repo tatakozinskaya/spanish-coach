@@ -118,3 +118,8 @@
 
 ## 2026-10-27 13:15 (Telegram) — 9/10
 - Weak: trabajar
+
+## 2026-10-27 15:00 (Коворкер) — 9/10
+- Errors: el dinero (написание → *dinaro вместо dinero; грамматика no tenemos dinero верна — повторная ошибка, вчера было *dinaros)
+- Weak: el dinero — написание di**e**n**e**ro (ошибка 2 сессии подряд); trabajar — 2 чистых прогона за сессию (trabaja, trabajamos), ещё один и закрывается
+- Notes: сильный день — 9 из 10 с первого раза, ошибка только одна (орфография dinero), исправлена сразу и слово воспроизведено верно в финальном задании (No tienen dinero). Закрыто по правилу трёх верных: **querer** (quieres с первого раза — e→ie держится), **llamarse** (se llama María), **amiga ↔ hermana** (Mi amiga se llama María — вчерашняя ошибка исправлена), **прилагательные на -e** (caliente дважды: find_the_error + перевод El agua está muy caliente), **мн. число el problema → los problemas … son muy grandes**, **estar + muy + состояние**. Уверенно: ser с характеристикой (Mis amigos son muy simpáticos), f1-артикль el agua, ударения и ¿/¡ без ошибок. В следующей сессии: диктант-перевод с dinero (и ещё 1-2 слова на чередование гласных), завершить trabajar, можно добавить los días / los cafés (мн. число с ударением).
