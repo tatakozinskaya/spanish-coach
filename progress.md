@@ -128,3 +128,6 @@
 - Errors: hambre («Я очень голоден» → *Siempre mucho humbro; пропущен tener, *humbro вместо hambre (немая h + -bre), muy → *siempre, порядок *mucho hambre вместо mucha hambre); исправлено переписыванием сразу и воспроизведено верно в финальном задании (Ella tiene mucha hambre)
 - Weak: **el hambre** — написание h…-bre и формула tener (mucha) hambre без ser/estar; el dinero — написание (сегодня верно с первого раза, 1-й чистый прогон из трёх)
 - Notes: 9 из 10 с первого раза, единственная ошибка — новая лексема hambre. **Закрыто по правилу трёх верных: trabajar** (trabaja + trabajamos, оба с первого раза, плюс 2 чистых прогона 27.10). Закрыт долг по написанию **dinero** — No tenemos dinero верно с первого раза (после *dinaros 26.10 и *dinaro 27.10), держим ещё 2 чистых прогона. Верно с первого раза: los días (мн. число с ударением — задача вчерашней сессии выполнена), El agua está muy caliente (прил. на -e + estar + muy), Tú vives en Novosibirsk, Él quiere (e→ie без подсказки), ser с характеристикой (María es simpática). Ударения и ¿/¡ без ошибок. В следующей сессии: повторить hambre (перевод + MC на tener hambre), ещё 1 прогон dinero в переводе, los cafés / las ciudades для мн. числа.
+
+## 2026-10-28 16:56 (Telegram) — 10/10
+- Weak: нет
