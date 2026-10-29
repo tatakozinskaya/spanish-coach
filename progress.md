@@ -131,3 +131,8 @@
 
 ## 2026-10-28 16:56 (Telegram) — 10/10
 - Weak: нет
+
+## 2026-10-29 15:00 (Коворкер) — 7/10
+- Errors: мн. число у прилагательных на -e (find_the_error «Los problemas son muy grandios» → исправил на *muy grande* — отсутствие женской формы понял, но потерял окончание -s; после разбора переписано верно); dormir nosotros (*dorminos* — опечатка, пропущена i; форма без чередования усвоена); потому что (*por ella tiene* вместо **porque** — предлог вместо союза)
+- Weak: **porque vs por**; **dormir: duerme / dormimos** (ещё 1 чистый прогон и закрывается); прилагательные на -e во мн. числе — ошибка была только в первом заходе, дальше три верных подряд (grandes, importantes, calientes) — правило выучено за сессию
+- Notes: hambre уверенно — MC «Ella tiene mucha hambre» и *mucha hambre* в финальном переводе оба верны с первого раза → **el hambre закрываем**; **dinero закрыто по правилу трёх верных** (сегодня: *Él no recibe dinero* в переводе + MC *No tenemos dinero*, плюс чистый прогон 28.10); los cafés (ударение + -s) и estar + muy + calientes — отлично; ударения и ¿/¡ без ошибок; в следующей сессии: 1 прогон dormir (dormimos), 1 прогон porque (перевод или find_the_error), las ciudades для мн. числа
