@@ -83,3 +83,5 @@ verbs:
      forms: [me levanto, te levantas, se levanta, nos levantamos, os levantáis, se levantan], example: "Me levanto a las siete."}
   - {inf: acostarse, ru: "ложиться спать", type: pronominal, level: 2,
      forms: [me acuesto, te acuestas, se acuesta, nos acostamos, os acostáis, se acuestan], example: "Me acuesto tarde.", note: "stem-change o→ue"}
+  - {inf: despertarse, ru: "просыпаться", type: pronominal, level: 2,
+     forms: [me despierto, te despiertas, se despierta, nos despertamos, os despertáis, se despiertan], example: "Por la mañana me despierto a las siete.", note: "stem-change e→ie (nosotros — despertamos)"}
