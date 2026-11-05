@@ -152,3 +152,8 @@
 
 ## 2026-11-03 16:59 (Telegram) — 10/10
 - Weak: нет
+
+## 2026-11-05 15:00 (Коворкер) — 7/10
+- Errors: a las + час («Мы едим в два часа» → *Comemos en las dos* вместо a las dos — калька с русского «в»; после разбора переписано верно); difícil (ударение → *deficil* вместо difícil; плюс стилистически *Esto es una palabra* → Esta palabra es…); la mano (*el mano* → la mano, ж.р. на -o)
+- Weak: **a las + час** (предлог a, не en; a la una — ед.ч.); **difícil / fácil** — тильда обязательна; **la mano** — ж.р. несмотря на -o (как la foto, la moto)
+- Notes: 7 из 10 с первого раза. **Закрыто по правилу трёх верных: vivir — форма yo** (vivo в 1-м задании и vive в переводе «Mi amigo vive en otra ciudad», оба с первого раза, плюс уверенно 21–22.10); **despertarse 3-е лицо мн.** (find_the_error *se despertan → se despiertan* с первого раза, e→ie держится); **dormir — dormimos** (чистый прогон с первого раза, опечатка 29.10 и 02.11 больше не повторилась); **necesitar** (MC necesitamos — выбор глагола верен, «нужно» = necesitamos + сущ. без артикля); **otra ciudad** — написание ciudad верно (2-й чистый прогон из трёх). Уверенно: comemos, vivís (форма vosotros с ударением), a la una (MC). Ошибки сессии — не спряжение, а предлог времени, орфография ударения и род исключения. В следующей сессии: 1 прогон a las ocho / a la una в переводе, difícil/fácil (ударение), la mano / el día (род исключений), и закрыть ciudad третьим чистым прогоном.
