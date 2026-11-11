@@ -162,3 +162,6 @@
 - Errors: **este/esto + существительное** (перевод «Это упражнение очень лёгкое» → *Este es muy fácil* без существительного; нужно Este ejercicio es muy fácil / Esto es muy fácil; повтор той же ошибки в №10 — *Esto es una día muy importante*); **el día — мужской род** (*una día → un día, как el problema / el idioma)
 - Weak: **este + существительное vs esto** (указательное не бывает без существительного; esto — средний род, отдельно); **el día / un día** — род исключения на -a; держать **la mano** (сегодня верно) и **difícil / fácil** (тильда верна дважды)
 - Notes: 8 из 10 с первого раза, обе ошибки — в одном и том же месте (указательное + существительное), после разбора №10 переписано верно. **Закрыто по правилу трёх верных: a las + час** (a las dos в переводе и a la una в MC — оба с первого раза, плюс a la una 05.11); **ciudad** — третий чистый прогон (otra ciudad в переводе) → слово закрыто; **la mano** (find_the_error → la mano, верно с первого раза, 1-й чистый прогон). Уверенно: abren (abrir, -IR), puede (o→ue), nos despertamos (без чередования в nosotros), vive, otra. Ударения, ñ и ¿/¡ — без ошибок. В следующей сессии: este/esto + существительное (перевод и find_the_error), un día / el día, ещё 1 прогон la mano, и множественное число los días.
+
+## 2026-11-11 12:35 (Telegram) — 7/10
+- Weak: el libro, escribir, ir
